@@ -1,4 +1,4 @@
-# backdate - a UNIX/Linux shell script to move a date forwards or backwards
+# backdate - a UNIX/Linux shell script to move a date forwards or backwards one or more days
 
 The `backdate` shell script can move a date forward or backwards one
 or more days. For example to move the date 5th March 2008 back 7 days type:
