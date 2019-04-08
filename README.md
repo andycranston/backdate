@@ -27,6 +27,7 @@ When called with no arguments it displays yesterdays date.  Example:
 ```
 $ backdate
 2 4 2019
+$
 ```
 
 When called with one argument which is a positive integer argument it
@@ -35,6 +36,7 @@ displays the date that many days from todays date.  Example:
 ```
 $ backdate 5
 8 4 2019
+$
 ```
 
 When called with one argument which is a negative integer argument it
@@ -43,6 +45,7 @@ displays the date that many days before todays date.  Example:
 ```
 $ backdate -7
 27 3 2019
+$
 ```
 
 When called with three arguments the first argument is the day of
@@ -53,6 +56,7 @@ For example:
 ```
 $ backdate 25 12 2000
 24 12 2000
+$
 ```
 
 When called with four arguments (you can probably guess where this
@@ -68,6 +72,7 @@ $ backdate 25 12 2000 7
 1 1 2001
 $ backdate 6 7 1974 365
 6 7 1975
+$
 ```
 
 If the fourth argument is a negative integer the date on the command
@@ -78,6 +83,7 @@ $ backdate 2 1 2000 -2
 31 12 1999
 $ backdate 31 10 1960 -1461
 31 10 1956
+$
 ```
 
 ## A note on efficiency
@@ -114,6 +120,7 @@ Su Mo Tu We Th Fr Sa
 20 21 22 23 24 25 26
 27 28 29
 
+$
 ```
 
 As we are just interested in the last column of output run:
@@ -128,6 +135,7 @@ Sa
 26
 29
 
+$
 ```
 
 We do not want any blank lines or lines with letters so by running:
@@ -140,6 +148,7 @@ $ cal 2 1972 | awk '{ print $NF }' | grep '[0-9]'
 19
 26
 29
+$
 ```
 
 Now the last line of this output is the number of days on that month.  By
@@ -148,6 +157,7 @@ adding the standard UNIX command `tail` to the output as follows:
 ```
 $ cal 2 1972 | awk '{ print $NF }' | grep '[0-9]' | tail -n 1
 29
+$
 ```
 
 we get exactly what we want.  It is this pipeline that is present in the
