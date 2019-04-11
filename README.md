@@ -169,7 +169,7 @@ dim()
   m=$1
   y=$2
 
-  cal $m $y | awk '{ print $NF }' | grep "[0-9]" | $TAILCMD -n 1
+  cal $m $y | grep '[0-9]' | tail -n 1 | awk '{ print $NF }'
 }
 ```
 
