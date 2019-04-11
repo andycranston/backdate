@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# @(!--#) @(#) backdate.txt, version 005, 21-march-2013
+# @(!--#) @(#) backdate.txt, version 006, 11-april-2019
 #
 # backdate
 #
@@ -17,7 +17,7 @@ dim()
   m=$1
   y=$2
 
-  cal $m $y | awk '{ print $NF }' | grep "[0-9]" | $TAILCMD -n 1
+  cal $m $y | grep '[0-9]' | tail -n 1 | awk '{ print $NF }'
 }
 
 #
@@ -132,13 +132,6 @@ PATH=/bin:/usr/bin
 export PATH
 
 progname=`basename $0`
-
-TAILCMD=tail
-
-if [ -x /usr/xpg4/bin/tail ]
-then
-  TAILCMD=/usr/xpg4/bin/tail
-fi
 
 case $# in
   0)
