@@ -138,7 +138,7 @@ $
 ```
 
 As we want to work out the number of days in the month
-only the last line of the output is of interest to
+only the last line of the output is of interest so
 use the `tail` command like this:
 
 ```
@@ -179,8 +179,8 @@ that pulls the required data out in a format you can use.
 ## Exercise for the reader
 
 Now you can see the power of the UNIX pipeline why not write a script
-that given the day of the month, the month number and year works out
-and displays the day of the week that date is.
+that given the day of the month, the month number and the year works
+out and displays the day of the week that date is.
 
 ---------------------------------------------------
 
