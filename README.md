@@ -123,45 +123,41 @@ Su Mo Tu We Th Fr Sa
 $
 ```
 
-As we are just interested in the last column of output run:
+We are only interested in lines with numbers in them so
+use the `grep` command as follows:
 
 ```
-$ cal 2 1972 | awk '{ print $NF }' | grep '[0-9]'
-1972
-Sa
-5
-12
-19
-26
-29
-
+$ cal 2 1972 | grep '[0-9]'
+   February 1972
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29
 $
 ```
 
-We do not want any blank lines or lines with letters so by running:
+As we want to work out the number of days in the month
+only the last line of the output is of interest to
+use the `tail` command like this:
 
 ```
-$ cal 2 1972 | awk '{ print $NF }' | grep '[0-9]'
-1972
-5
-12
-19
-26
-29
+$ cal 2 1972 | grep '[0-9]' | tail -n 1
+27 28 29
 $
 ```
 
-Now the last line of this output is the number of days on that month.  By
-adding the standard UNIX command `tail` to the output as follows:
+Nearly there.  Now we just want the last number on the line.  By
+using the `awk` command we can do this:
 
 ```
-$ cal 2 1972 | awk '{ print $NF }' | grep '[0-9]' | tail -n 1
+$ cal 2 1972 | grep '[0-9]' | tail -n 1 | awk '{ print $NF }'
 29
 $
 ```
 
-we get exactly what we want.  It is this pipeline that is present in the
-`backdate` shell script.  Here it is in the `dim` function:
+So 29 days in February in 1972.  It is the above pipeline that is present
+in the `backdate` shell script.  Here it is in the `dim` function:
 
 ```
 dim()
@@ -175,10 +171,10 @@ dim()
 
 See the full script for details.
 
-The key take away is that if an existing command exists that can solve
-part or most of your problem (determining the number of days in a given
-month and year) then use that command in a pipeline that pulls the
-required data out in a format you can use.
+The thing to learn here is that if an existing command exists that can
+solve part or most of your problem (in this case determining the number
+of days in a given month and year) then use that command in a pipeline
+that pulls the required data out in a format you can use.
 
 ## Exercise for the reader
 
